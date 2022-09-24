@@ -1,20 +1,30 @@
+#####################################################################
+#Zachary Delk
+#Stat 4030
+#Final Exam code
+#####################################################################
+#set working directory
 setwd("D:/stats/Stat_4030/Final Project")
 
+####################################################################
+#loading libraries
 library(readr)
+
+#importing datasets
 hospital = read.csv("hospital_readmission.csv")
 view(hospital)
-
+###################################################################
 females = hospital[hospital$female =='TRUE',]
 
 
-# 2 categorical
+# 2 categorical tests
 addmargins(table(females$diabetes, females$race_minority))
 
 prop.test(x = c(2312, 7925), n = c(2989, 10448), alternative = "greater", correct = FALSE)
 
 addmargins(table(females$race_minority))
 
-#2 numerical 
+#2 numerical tests
 plot(females$time_in_hospital, females$num_medications, 
      main="Figure 1: Time in hospital by Number of Medications", 
      xlab="Time in Hospital", ylab="Number of Medications", #Add axis labels
@@ -27,7 +37,7 @@ summary(t_co2)
 
 
 
-#cat and numerical
+#cat and numerical tests
 readd_out = females[females$readmitted_after_discharge == 1,]$number_previous_inpatient_visit
 noreadd_out = females[females$readmitted_after_discharge == 0,]$number_previous_inpatient_visit
 

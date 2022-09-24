@@ -1,12 +1,20 @@
+############################################################################
+#Zachary Delk
+#Stat 4210
+#Assignment 2
+############################################################################
+#Loading libraries
+library(statar)
+library(readr)
+###########################################################################
+#Checking to see how long it takes to load the dataset
 start.time <- Sys.time()
 child_data <- read.csv("D:/Stats Stuff/Stat_4210/datasets/FC2020v1.csv")
 end.time <- Sys.time()
 time.taken <- end.time - start.time
 print(time.taken)
-
+############################################################################
 summary(child_data)
-
-library(statar)
 
 sum_up(child_data)
 

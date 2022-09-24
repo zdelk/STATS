@@ -18,24 +18,28 @@ weather <- read_csv("D:/stats/Stat_3120/final project/2908553.csv")
 View(weather)
 summary(weather)
 
-
-library(readr)
 co2 <- read_csv("co2.csv")
 View(co2)
 
-library(readr)
 weather <- read_csv("stats_stuff/2908553.csv", 
                   col_types = cols(DATE = col_date(format = "%m/%d/%Y")))
 View(weather)
 #############################
 #build new variables
+
+#converting DATE to days of the week
 weather$day_of_week <- weekdays(weather$DATE)
+#taking year off of the date
 weather$DATE2 = format(weather$DATE, "%m-%d")
+#seperating year from the date
 weather$year = format(weather$DATE, "%y")
+#converting date to seasons
 weather$season <- time2season(weather$DATE,out.fmt = "seasons")
+#converting years to integers
 weather$year = as.integer(format(weather$year))
 weather$year4 = weather$year + 2000
 weather$year4[weather$year4 >= 2050] = weather$year4 - 100
+#creating new variable if it rained or not
 weather$rain = "No"
 weather$rain[weather$PRCP > 0] = "Yes"
 #############################################
@@ -62,9 +66,6 @@ plot(spring$DATE, spring$TMAX, main="All Temps in Spring",
      pch=20)
 ########################################################################################
 #test for tavg vs avg(tmax,tmin)
-
-
-
 pre_t_avg = subset(weather, !is.na(weather$TAVG))
 
 weather$testavg = 0.5 * weather$TMIN + .5 * weather$TMAX
@@ -84,8 +85,6 @@ abline(lm(weather$TAVG ~ weather$testavg), col = "#9DACBB", lty = 2, lwd = 2)
 
 cor(pre_t_avg$TAVG, pre_t_avg$testavg)
 ########
-
-
 plot(weather$DATE, weather$testavg, main="Base R Scatterplot", 
      xlab="date", ylab="TAVG", #Add axis labels
      pch=20)
@@ -104,7 +103,6 @@ plot(december$dayint, december$testavg, xlab = "Day", ylab = "Avg Temp",
 
 ggplot(december5, aes(x = dayint, y = testavg, color = year_string)) +
   geom_point()
-
 
 mod(5,5)
 
@@ -176,27 +174,17 @@ lm(year_avg$x ~ year_avg$Group.1)
 ################################################################
 ###########CI for average max temp on Birthday #################
 ################################################################
-
-
 Bday = subset(weather, weather$DATE2 == '03-02')
 
 table(Bday$rain)
 t.test(Bday$runavg, conf.level = 0.90)
-
 ####################################################################
 ############Does it rain more in spring?############################
 ####################################################################
-
 szn_rain = addmargins(table(weather$season , weather$rain))
 
 prop.test(x = 1188, n = 4847,p = .25,  alternative = "greater", correct = FALSE)
-
 #####################################################################
-
-
-
-
-
 set.seed(101)
 x <- 1:10
 y <- rnorm(10)

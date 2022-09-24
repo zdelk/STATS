@@ -1,3 +1,9 @@
+###########################################################################
+#Zachary Delk
+#Stat 3120
+#Final Exam
+###########################################################################
+
 library(readr)
 admissions_data <- read_csv("D:/stats/Stat_3120/Final/admissions_data.csv", 
                             col_types = cols(year = col_character()))

@@ -24,9 +24,7 @@ count3 = length(marData$marijuan)
 count4 = length(which(marData$marijuan == 'NotLegal'))
 wald.ci(x = count4, n = count3, conf.level = 0.99)
 
-
 #two-way table between political party and gun ownership (remove missing vals)
-
 gunpolData = subset(demData, !is.na(demData$owngun))
 
 prop.table(table(gunpolData$polparty, gunpolData$owngun),1)
@@ -78,7 +76,6 @@ prop.test(60, 150, alternative = "greater", p =0.3, conf.level = 0.95)
 
 addmargins(table(UCDavis1$Sex, UCDavis1$Seat))
 
-
 malefront = length(which(UCDavis1$Sex == 'Male' & UCDavis1$Seat == 'Front'))
 femalefront = length(which(UCDavis1$Sex == 'Female' & UCDavis1$Seat == 'Front'))
 totalmale = length(which(UCDavis1$Sex == 'Male'))
@@ -97,4 +94,3 @@ t.test(nomid$GPA ~ nomid$Seat, conf.level = 0.90)
 #hypothesis test. mean blood pressure for waiting for dentist
 
 t.test(blood_pressure$bp_before, blood_pressure$bp_after, paired = TRUE)
-

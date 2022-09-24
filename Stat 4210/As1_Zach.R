@@ -1,4 +1,8 @@
-
+###############################################################################
+#Zachary Delk
+#Stat 4210
+#Assignment 1
+###############################################################################
 # Load the dataset on the DataFrame named "head_Neck_radio"
 head_Neck_radio <- read.csv("D:/stats/Stat_4210/Assignment 1/Head_Neck_Radiomics.csv")
 

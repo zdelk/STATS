@@ -1,25 +1,19 @@
+####################################################################
+#Zachary Delk
+#Stat 3120
+#Homework 3
+####################################################################
+#loading libraries
 library(readr)
-GSS <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/GSS-18.csv")
-View(GSS)
-
-library(readr)
-heightfoot <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/heightfoot.csv")
-View(heightfoot)
-
-library(readr)
-poverty <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/poverty.csv")
-View(poverty)
-
-library(readr)
-UCDavis1 <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/UCDavis1.csv")
-View(UCDavis1)
-
-library(readr)
-UCDavis2 <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/UCDavis2.csv")
-View(UCDavis2)
-
 library("modelr")
-#*******************************************************************
+##################################################################
+#loading datasets
+GSS <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/GSS-18.csv")
+heightfoot <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/heightfoot.csv")
+poverty <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/poverty.csv")
+UCDavis1 <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/UCDavis1.csv")
+UCDavis2 <- read_csv("D:/stats/Stat_3120/Hw/Hw 3/UCDavis2.csv")
+#################################################################3
 #Q1
 ucd1 = subset(UCDavis1, UCDavis1$TVHrs <= 90)
 summary(lm(ucd1$GPA ~ ucd1$TVHrs))
@@ -30,18 +24,12 @@ plot(ucd1$TVHrs, ucd1$GPA, xlab = "Hours watched per week",
 plot(heightfoot$footlength, heightfoot$height, xlab ='footlength',
      ylab = 'height', main = 'footlength vs height')
 
-
-
-
-
 summary(heightfoot)
 
 hf1 = subset(heightfoot, heightfoot$height <80)
 
 cor(hf1$footlength, hf1$height)
 summary(lm(hf1$height ~ hf1$footlength))
-
-
 
 
 hfsum = lm(hf1$height ~ hf1$footlength)
